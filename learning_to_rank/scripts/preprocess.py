@@ -15,10 +15,6 @@ def get_data(data_path):
         df.drop(
             columns=df.columns[df.isna().all()].tolist(), inplace=True
         )  # delete columns where all data is missing
-        print(
-            df.columns[df.isna().any()].tolist()
-        )  # check if any remaining columns have missing data
-        print(df.head)  # just taking a peak at the data... looks good so far
 
     split = {}
 
