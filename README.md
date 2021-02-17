@@ -2,6 +2,8 @@
 
 In this project I evaluate a search academic dataset using common learn-to-rank features, build a ranking model using the dataset, and discuss how additional features could be used and how they would impact the performance of the model.
 
+Author: Vladimir Lezzhov
+
 # Dataset
 
 The dataset consists of machine learning data, in which queries and urls are represented by IDs. The datasets consist of feature vectors extracted from query-url pairs along with relevance judgment labels. The relevance judgments are obtained from a retired labeling set of a commercial web search engine (Microsoft Bing), which take 5 values from 0 (irrelevant) to 4 (perfectly relevant).
@@ -81,6 +83,4 @@ https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html,
  e.g. Use small max_bin, Use min_data_in_leaf and min_sum_hessian_in_leaf,Use bigger training data, etc
 6) Consider outliers for some features and remove them if necessary
 7) Consider if it is needed to engineer new features, or to take some out.
-
-Author: Vladimir Lezzhov
 
