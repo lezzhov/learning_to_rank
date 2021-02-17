@@ -13,7 +13,7 @@ from preprocess import get_data
 def main():
     args = get_train_args()
 
-    X_train, _, X_val, y_train, _, y_val, group_vali, group_train = get_data(
+    X_train, X_test, X_val, y_train, y_test, y_val, group_vali, group_train = get_data(
         args["data_path"]
     )
 

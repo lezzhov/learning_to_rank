@@ -17,7 +17,7 @@ def main():
 
     args = parse.get_deploy_args()
 
-    _, X_test, _, _, y_test, _, _, _ = get_data(args["data_path"])
+    X_train, X_test, X_val, y_train, y_test, y_val, group_vali, group_train = get_data(args["data_path"])
 
     gbm = lgb.Booster(model_file=args["model_path"])
 
