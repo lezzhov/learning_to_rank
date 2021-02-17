@@ -4,6 +4,48 @@ In this project I evaluate a search academic dataset using common learn-to-rank 
 
 Author: Vladimir Lezzhov
 
+# Dataset
+
+The dataset consists of machine learning data, in which queries and urls are represented by IDs. The datasets consist of feature vectors extracted from query-url pairs along with relevance judgment labels. The relevance judgments are obtained from a retired labeling set of a commercial web search engine (Microsoft Bing), which take 5 values from 0 (irrelevant) to 4 (perfectly relevant).
+
+In the data files, each row corresponds to a query-url pair. The first column is relevance label of the pair, the second column is query id, and the following columns are features. The larger value the relevance label has, the more relevant the query-url pair is. A query-url pair is represented by a 136-dimensional feature vector.
+
+Below are two rows from MSLR-WEB10K dataset:
+
+==============================================
+
+0 qid:1 1:3 2:0 3:2 4:2 … 135:0 136:0
+
+2 qid:1 1:3 2:3 3:0 4:0 … 135:0 136:0
+
+==============================================
+
+You can read about the features included in the dataset here: https://www.microsoft.com/en-us/research/project/mslr/
+
+# Model
+
+I used LightGBM due to its simplicity and support of learning to rank tasks. Light GBM is a gradient boosting framework that uses tree based learning algorithm. Light GBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm:
+
+![alt text](https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png)
+
+
+# Results
+
+I chose nDCG as the evaluation metric because it takes graded relevance values into account. 
+It does a better job in evaluating the position of ranked items compared to MAP 
+(which only considers binary relevance ranks, 0 or 1) or MRR 
+(which only looks at the highest ranking document and does not consider all links).
+
+nDCG employs a factor called smooth logarithmic discounting which improves performance.
+Authors of the work at http://proceedings.mlr.press/v30/Wang13.pdf show that
+for every pair of substantially different ranking recommender,
+the NDCG metric is consistently able to determine the better one.
+
+All nDCG calculations are relative values on the interval 0.0 to 1.0.
+A perfect nDCG score would be 1.0. Therefore,
+considering the score of 0.9257691834034475, I think the model performed reasonably well.
+
+
 # Usage
 
 Setup the project:
@@ -36,46 +78,6 @@ Deploying:
 ```
 python3 deploy.py ../data ../model.txt
 ```
-
-# Dataset
-
-The dataset consists of machine learning data, in which queries and urls are represented by IDs. The datasets consist of feature vectors extracted from query-url pairs along with relevance judgment labels. The relevance judgments are obtained from a retired labeling set of a commercial web search engine (Microsoft Bing), which take 5 values from 0 (irrelevant) to 4 (perfectly relevant).
-
-In the data files, each row corresponds to a query-url pair. The first column is relevance label of the pair, the second column is query id, and the following columns are features. The larger value the relevance label has, the more relevant the query-url pair is. A query-url pair is represented by a 136-dimensional feature vector.
-
-Below are two rows from MSLR-WEB10K dataset:
-
-==============================================
-
-0 qid:1 1:3 2:0 3:2 4:2 … 135:0 136:0
-
-2 qid:1 1:3 2:3 3:0 4:0 … 135:0 136:0
-
-==============================================
-
-You can read about the features included in the dataset here: https://www.microsoft.com/en-us/research/project/mslr/
-
-# Model
-
-I used LightGBM due to its simplicity and support of learning to rank tasks. Light GBM is a gradient boosting framework that uses tree based learning algorithm. Light GBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm:
-
-![alt text](https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png)
-
-# Results
-
-I chose nDCG as the evaluation metric because it takes graded relevance values into account. 
-It does a better job in evaluating the position of ranked items compared to MAP 
-(which only considers binary relevance ranks, 0 or 1) or MRR 
-(which only looks at the highest ranking document and does not consider all links).
-
-nDCG employs a factor called smooth logarithmic discounting which improves performance.
-Authors of the work at http://proceedings.mlr.press/v30/Wang13.pdf show that
-for every pair of substantially different ranking recommender,
-the NDCG metric is consistently able to determine the better one.
-
-All nDCG calculations are relative values on the interval 0.0 to 1.0.
-A perfect nDCG score would be 1.0. Therefore,
-considering the score of 0.9257691834034475, I think the model performed reasonably well.
 
 # Future Development
 
