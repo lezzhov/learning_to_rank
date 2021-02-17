@@ -9,12 +9,13 @@ import optuna
 from sklearn import preprocessing
 from preprocess import get_data
 
+
 def main():
     args = get_train_args()
 
-    X_train, _, X_val, \
-    y_train, _, y_val, \
-    group_vali, group_train = get_data(args["data_path"])
+    X_train, _, X_val, y_train, _, y_val, group_vali, group_train = get_data(
+        args["data_path"]
+    )
 
     # Now that we found the best hyperparameters, let's use them to train our model for a longer time.
     gbm = lgb.LGBMRanker(
@@ -34,6 +35,7 @@ def main():
     )
 
     gbm.save_model(args["output_file_name"], num_iteration=gbm.best_iteration)
+
 
 if __name__ == "__main__":
     main()

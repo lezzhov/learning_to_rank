@@ -1,13 +1,16 @@
 import argparse
 
+
 def get_train_args():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--verbose", help="increase output verbosity",
-                        action="store_true")
+    parser.add_argument(
+        "--verbose", help="increase output verbosity", action="store_true"
+    )
     args = parser.parse_args()
 
     return args
+
 
 def get_tune_args():
 
@@ -20,8 +23,9 @@ def get_tune_args():
 
 def get_test_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--verbose", help="increase output verbosity",
-                        action="store_true")
+    parser.add_argument(
+        "--verbose", help="increase output verbosity", action="store_true"
+    )
     args = parser.parse_args()
 
     return args
@@ -29,8 +33,9 @@ def get_test_args():
 
 def get_deploy_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--verbose", help="increase output verbosity",
-                        action="store_true")
+    parser.add_argument(
+        "--verbose", help="increase output verbosity", action="store_true"
+    )
     args = parser.parse_args()
 
     return args

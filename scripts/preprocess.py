@@ -11,18 +11,9 @@ from sklearn import preprocessing
 
 def get_data(data_path):
     dfs = {
-        "train": pd.read_csv(
-            f"{data_path}/train.txt",
-            delimiter=" ", nrows=1000
-        ),
-        "vali": pd.read_csv(
-            f"{data_path}/vali.txt",
-            delimiter=" ", nrows=100
-        ),
-        "test": pd.read_csv(
-            f"{data_path}vali.txt",
-            delimiter=" ", nrows=100
-        )
+        "train": pd.read_csv(f"{data_path}/train.txt", delimiter=" ", nrows=1000),
+        "vali": pd.read_csv(f"{data_path}/vali.txt", delimiter=" ", nrows=100),
+        "test": pd.read_csv(f"{data_path}vali.txt", delimiter=" ", nrows=100),
     }
 
     for df in dfs.values():
@@ -36,7 +27,6 @@ def get_data(data_path):
         print(df.head)  # just taking a peak at the data... looks good so far
 
     split = {}
-
 
     split["X_train"] = dfs["train"].iloc[:, 1:]
     split["X_val"] = dfs["vali"].iloc[:, 1:]
@@ -64,14 +54,52 @@ def get_data(data_path):
     # appear to be less useful (E.g. IDF based features seem not to be able to capture the web page quality well enough).
     # Therefore, I will train the model on the more relevant features instead.
 
-    columns_to_remove = [41, 42, 43, 44, 45, 66, 67, 68, 69, 70,
-                         91, 92, 93, 94, 95, 16, 17, 18, 19, 20,
-                         71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
-                         81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
+    columns_to_remove = [
+        41,
+        42,
+        43,
+        44,
+        45,
+        66,
+        67,
+        68,
+        69,
+        70,
+        91,
+        92,
+        93,
+        94,
+        95,
+        16,
+        17,
+        18,
+        19,
+        20,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+    ]
 
     for name, df in split.items():
         # Get rid of irrelevant information at the beginning of each feature value
-        df = df.applymap(lambda x: x.split(':', 1)[-1])
+        df = df.applymap(lambda x: x.split(":", 1)[-1])
         # convert data into float format to conform to LGBMRanker input standard
         df = df.astype(float)
         # get rid of the query ID column since it is not a feature
@@ -83,6 +111,13 @@ def get_data(data_path):
 
         split[name] = df
 
-    return split["X_train"], split["X_test"], split["X_val"],\
-           y_train, y_test, y_val,\
-           group_vali, group_train
+    return (
+        split["X_train"],
+        split["X_test"],
+        split["X_val"],
+        y_train,
+        y_test,
+        y_val,
+        group_vali,
+        group_train,
+    )

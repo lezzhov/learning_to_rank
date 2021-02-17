@@ -17,9 +17,7 @@ def main():
 
     args = parse.get_test_args()
 
-    _, X_test, _, \
-    _, y_test, _, \
-    _, _ = get_data(args["data_path"])
+    _, X_test, _, _, y_test, _, _, _ = get_data(args["data_path"])
 
     gbm = lgb.Booster(model_file=args["model_path"])
 
@@ -39,6 +37,7 @@ def main():
             [true_relevance.to_numpy()], [relevance_score["relevance_score"].to_numpy()]
         ),
     )
+
 
 if __name__ == "__main__":
     main()

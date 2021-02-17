@@ -10,13 +10,12 @@ from sklearn import preprocessing
 from preprocess import get_data
 from parse import get_tune_args
 
+
 def main():
     args = get_tune_args()
-    X_train, _, X_val, \
-    y_train, _, y_val, \
-    group_vali, group_train = get_data(args["data_path"])
-
-
+    X_train, _, X_val, y_train, _, y_val, group_vali, group_train = get_data(
+        args["data_path"]
+    )
 
     # To train the model, I will be using LightGBM due to its simplicity and support of learning to rank tasks.
 
@@ -51,12 +50,13 @@ def main():
 
         return gbm.best_score_["valid_0"]["ndcg@1"]
 
-    study = optuna.create_study(direction='maximize')
+    study = optuna.create_study(direction="maximize")
     study.optimize(objective, n_trials=10)
     best_params = study.best_trial.params
 
-    print('Number of finished trials:', len(study.trials))
-    print('Best trial:', best_params)
+    print("Number of finished trials:", len(study.trials))
+    print("Best trial:", best_params)
+
 
 if __name__ == "__main__":
     main()
