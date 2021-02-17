@@ -54,6 +54,7 @@ def get_data(data_path):
     # appear to be less useful (E.g. IDF based features seem not to be able to capture the web page quality well enough).
     # Therefore, I will train the model on the more relevant features instead.
 
+    # fmt: off
     columns_to_remove = [
         41,
         42,
@@ -96,6 +97,8 @@ def get_data(data_path):
         89,
         90,
     ]
+
+    # fmt: on
 
     for name, df in split.items():
         # Get rid of irrelevant information at the beginning of each feature value
