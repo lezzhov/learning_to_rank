@@ -1,4 +1,4 @@
-# Learning To Rank using the MSLR-WEB10K dataset
+# Learning To Rank using the MSLR-WEB10K Dataset
 
 In this project I evaluate a search academic dataset using common learn-to-rank features, build a ranking model using the dataset, and discuss how additional features could be used and how they would impact the performance of the model.
 
@@ -51,7 +51,7 @@ considering the score of 0.9257691834034475, I think the model performed reasona
 
 # Future Development
 
-Here are some possible 
+Here are some possible ideas on how to improve the model's performance:
 
 1) Use the full available dataset instead of just 1 fold, possibly incorporating 5-fold cross-validation.
 2) Try to tune a higher number of hyperparameters
