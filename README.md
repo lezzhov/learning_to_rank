@@ -103,6 +103,6 @@ With the user behavior features, such as query-url click count, url click count,
 
 * If I had the additional features of: query_text or the actual textual query itself, as well as document text features like title_text, body_text, anchor_text, url for the document, how would I include them in my model to improve its performance?
 
-One idea that comes to mind is one-hot encoding the text features while perserving the word order, and passing them through a holographic dual LSTM learning to rank architecture,
+One possibility is one-hot encoding the text features while perserving the word order, and passing them through a holographic dual LSTM learning to rank architecture,
 like the one described here: https://arxiv.org/pdf/1707.06372.pdf. LSTM is a good choice for processing sequential text data since it considers word order. It could then be possible to merge the model I created with the new LSTM via ensemble learning.
 
