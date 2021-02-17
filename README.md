@@ -22,14 +22,47 @@ You can read about the features included in the dataset here: https://www.micros
 
 # Usage
 
+Tuning the model hyperparameters:
 
+Training:
+
+Testing:
+
+Deploying:
 
 # Model
+![alt text](https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png)
 
 # Results
 
+I chose nDCG as the evaluation metric because it takes graded relevance values into account. 
+It does a better job in evaluating the position of ranked items compared to MAP 
+(which only considers binary relevance ranks, 0 or 1) or MRR 
+(which only looks at the highest ranking document and does not consider all links).
+
+nDCG employs a factor called smooth logarithmic discounting which improves performance.
+Authors of the work at http://proceedings.mlr.press/v30/Wang13.pdf show that
+for every pair of substantially different ranking recommender,
+the NDCG metric is consistently able to determine the better one.
+
+All nDCG calculations are relative values on the interval 0.0 to 1.0.
+A perfect nDCG score would be 1.0. Therefore,
+considering the score of 0.9257691834034475, I think the model performed reasonably well.
+
 # Future Development
 
+Here are some possible 
+
+1) Use the full available dataset instead of just 1 fold, possibly incorporating 5-fold cross-validation.
+2) Try to tune a higher number of hyperparameters
+3) Tune hyperparamters and train the model for a longer period of time
+4) Evaluate whether the removal of the features the paper found to be less useful did indeed lead to better results 
+(compare mean nDCG scores for both cases)
+5) Consider overfitting and underfitting, try some of the strategies suggested here:
+https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html,
+ e.g. Use small max_bin, Use min_data_in_leaf and min_sum_hessian_in_leaf,Use bigger training data, etc
+6) Consider outliers for some features and remove them if necessary
+7) Consider if it is needed to engineer new features, or to take some out.
 
 Author: Vladimir Lezzhov
 
