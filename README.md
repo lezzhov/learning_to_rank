@@ -30,22 +30,22 @@ python3 setup.py install
 
 Tuning the model hyperparameters:
 ```
-python3 tune [] []
+python3 tune.py ../data
 ```
 
 Training:
 ```
-python3 train [] []
+python3 train.py --num_leaves --learning_rate --reg_lambda
 ```
 
 Testing:
 ```
-python3 test [] []
+python3 test_model.py ../data model.txt
 ```
 
 Deploying:
 ```
-python3 deploy [] []
+python3 deploy.py [] []
 ```
 
 # Model
