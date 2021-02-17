@@ -26,8 +26,8 @@ def get_data(data_path):
     y_val = dfs["vali"].iloc[:, 0]
     y_test = dfs["test"].iloc[:, 0]
 
-    # In order to use the Light GBM framework, we need to create variables group_train and group_vali,
-    # which contain number of examples for each query ID. This will allow LGBMRanker to group examples by query during training.
+    # In order to use the Light GBM framework, we need to create variables group_train and group_vali, which contain
+    # number of examples for each query ID. This will allow LGBMRanker to group examples by query during training.
 
     g = split["X_train"].groupby(by=1)
     size = g.size()
@@ -37,12 +37,11 @@ def get_data(data_path):
     size = g.size()
     group_vali = size.to_list()
 
-    # According to a LASSO regression analysis in
-    # "Feature Selection and Model Comparisonon Microsoft Learning-to-Rank Data Sets",
-    # (https://arxiv.org/pdf/1803.05127.pdf),
-    # variance features, as well as Inverse Document Frequency (IDF) based features,
-    # appear to be less useful (E.g. IDF based features seem not to be able to capture the web page quality well enough).
-    # Therefore, I will train the model on the more relevant features instead.
+    # According to a LASSO regression analysis in "Feature Selection and Model Comparisonon Microsoft
+    # Learning-to-Rank Data Sets", (https://arxiv.org/pdf/1803.05127.pdf), variance features, as well as Inverse
+    # Document Frequency (IDF) based features, appear to be less useful (E.g. IDF based features seem not to be able
+    # to capture the web page quality well enough). Therefore, I will train the model on the more relevant features
+    # instead.
 
     # fmt: off
     columns_to_remove = [41, 42, 43, 44, 45, 66, 67, 68, 69, 70,
