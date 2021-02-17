@@ -95,7 +95,7 @@ https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html,
 6) Consider outliers for some features and remove them if necessary
 7) Consider if it is needed to engineer new features, or to take some out.
 
-The following are ideas on how additional features could be used:
+The following are thoughts on how additional features could be used:
 
 * If I had an additional feature for each row of the dataset that was unique identifier for the user performing the query e.g. user_id, how could I use it to improve the performance of the model?
 
