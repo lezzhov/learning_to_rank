@@ -24,7 +24,7 @@ You can read about the features included in the dataset here: https://www.micros
 
 # Model
 
-I used LightGBM due to its simplicity and support of learning to rank tasks. Light GBM is a gradient boosting framework that uses tree based learning algorithm. Light GBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm:
+I used LightGBM due to its simplicity and support of learning to rank tasks. Light GBM is a gradient boosting framework that uses tree based learning algorithm. Light GBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm.
 
 ![alt text](https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png)
 
