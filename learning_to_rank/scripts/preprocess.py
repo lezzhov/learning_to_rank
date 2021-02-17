@@ -1,12 +1,6 @@
 from parse import get_train_args
 import pandas as pd
-from zipfile import ZipFile
-import urllib.request
 import numpy as np
-from sklearn.metrics import ndcg_score
-import optuna.integration.lightgbm as lgb
-import optuna
-from sklearn import preprocessing
 
 
 def get_data(data_path):

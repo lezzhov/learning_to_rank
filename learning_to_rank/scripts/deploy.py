@@ -1,13 +1,7 @@
 from parse import get_tune_args
 import pandas as pd
-from zipfile import ZipFile
-import urllib.request
 import numpy as np
-from sklearn.metrics import ndcg_score
 import optuna.integration.lightgbm as lgb
-import optuna
-from sklearn import preprocessing
-from preprocess import get_data
 import parse
 
 
@@ -68,7 +62,7 @@ def main():
 
     test_pred = gbm.predict(X_df)
 
-
+    pd.DataFrame(test_pred).to_csv("output.txt")
 
 
 if __name__ == "__main__":
