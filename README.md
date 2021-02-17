@@ -6,7 +6,7 @@ Author: Vladimir Lezzhov
 
 # Dataset
 
-The dataset consists of machine learning data, in which queries and urls are represented by IDs. The datasets consist of feature vectors extracted from query-url pairs along with relevance judgment labels. The relevance judgments are obtained from a retired labeling set of a commercial web search engine (Microsoft Bing), which take 5 values from 0 (irrelevant) to 4 (perfectly relevant).
+The datasets consist of feature vectors extracted from query-url pairs along with relevance judgment labels. Queries and urls are represented by IDs. The relevance judgments are obtained from a retired labeling set of a commercial web search engine (Microsoft Bing), which take 5 values from 0 (irrelevant) to 4 (perfectly relevant).
 
 In the data files, each row corresponds to a query-url pair. The first column is relevance label of the pair, the second column is query id, and the following columns are features. The larger value the relevance label has, the more relevant the query-url pair is. A query-url pair is represented by a 136-dimensional feature vector.
 
@@ -23,8 +23,9 @@ Below are two rows from MSLR-WEB10K dataset:
 You can read about the features included in the dataset here: https://www.microsoft.com/en-us/research/project/mslr/
 
 # Model
+LightGBM is a gradient boosting framework that uses tree based learning algorithm. It has support for learning to rank tasks. I chose LightGBM because it is a superior gradient boosting model when compared to xgboost as a baseline. It performs faster, has better accuracy, and consumes less memory.
 
-I used LightGBM due to its simplicity and support of learning to rank tasks. Light GBM is a gradient boosting framework that uses tree based learning algorithm. Light GBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm.
+LightGBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm.
 
 ![alt text](https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png)
 
