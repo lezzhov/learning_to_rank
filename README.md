@@ -37,24 +37,28 @@ python3 tune.py ../data
 
 Training:
 ```
-python3 train.py --num_leaves --learning_rate --reg_lambda
+python3 train.py ../data
+```
 
-or, to change hyperparameters from defaults:
-
-python3 train.py --num_leaves 66 --learning_rate 0.244 --reg_lambda 2.376
+Or, to change hyperparameters from defaults during training:
+```
+python3 train.py ../data --num_leaves 66 --learning_rate 0.244 --reg_lambda 2.376
 ```
 
 Testing:
 ```
-python3 test_model.py ../data model.txt
+python3 test_model.py ../data ../model.txt
 ```
 
 Deploying:
 ```
-python3 deploy.py [] []
+python3 deploy.py ../data ../model.txt
 ```
 
 # Model
+
+I used LightGBM due to its simplicity and support of learning to rank tasks. Light GBM is a gradient boosting framework that uses tree based learning algorithm. Light GBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm:
+
 ![alt text](https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png)
 
 # Results
