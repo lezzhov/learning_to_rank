@@ -38,6 +38,10 @@ python3 tune.py ../data
 Training:
 ```
 python3 train.py --num_leaves --learning_rate --reg_lambda
+
+or, to change hyperparameters from defaults:
+
+python3 train.py --num_leaves 66 --learning_rate 0.244 --reg_lambda 2.376
 ```
 
 Testing:
