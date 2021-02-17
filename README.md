@@ -91,7 +91,7 @@ Here are some possible ideas on how to improve the model's performance:
 (compare mean nDCG scores for both cases)
 5) Consider overfitting and underfitting, try some of the strategies suggested here:
 https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html,
- e.g. Use small max_bin, Use min_data_in_leaf and min_sum_hessian_in_leaf,Use bigger training data, etc
+ e.g. use small max_bin, use min_data_in_leaf and min_sum_hessian_in_leaf, use bigger training data, etc
 6) Consider outliers for some features and remove them if necessary
 7) Consider if it is needed to engineer new features, or to take some out.
 
