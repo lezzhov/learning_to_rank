@@ -11,9 +11,9 @@ from sklearn import preprocessing
 
 def get_data(data_path):
     dfs = {
-        "train": pd.read_csv(f"{data_path}/train.txt", delimiter=" ", nrows=1000),
-        "vali": pd.read_csv(f"{data_path}/vali.txt", delimiter=" ", nrows=100),
-        "test": pd.read_csv(f"{data_path}vali.txt", delimiter=" ", nrows=100),
+        "train": pd.read_csv(f"{data_path}/train.txt", delimiter=" "),
+        "vali": pd.read_csv(f"{data_path}/vali.txt", delimiter=" "),
+        "test": pd.read_csv(f"{data_path}vali.txt", delimiter=" "),
     }
 
     for df in dfs.values():
@@ -55,49 +55,10 @@ def get_data(data_path):
     # Therefore, I will train the model on the more relevant features instead.
 
     # fmt: off
-    columns_to_remove = [
-        41,
-        42,
-        43,
-        44,
-        45,
-        66,
-        67,
-        68,
-        69,
-        70,
-        91,
-        92,
-        93,
-        94,
-        95,
-        16,
-        17,
-        18,
-        19,
-        20,
-        71,
-        72,
-        73,
-        74,
-        75,
-        76,
-        77,
-        78,
-        79,
-        80,
-        81,
-        82,
-        83,
-        84,
-        85,
-        86,
-        87,
-        88,
-        89,
-        90,
-    ]
-
+    columns_to_remove = [41, 42, 43, 44, 45, 66, 67, 68, 69, 70,
+                         91, 92, 93, 94, 95, 16, 17, 18, 19, 20,
+                         71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
+                         81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
     # fmt: on
 
     for name, df in split.items():

@@ -34,7 +34,7 @@ def main():
         early_stopping_rounds=150,
     )
 
-    gbm.save_model(args["output_file_name"], num_iteration=gbm.best_iteration)
+    gbm.booster_.save_model(args["output_file_name"], num_iteration=gbm.best_iteration)
 
 
 if __name__ == "__main__":
