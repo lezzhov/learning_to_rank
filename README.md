@@ -22,16 +22,31 @@ You can read about the features included in the dataset here: https://www.micros
 
 # Usage
 
+Setup the project:
+
+```
+python3 setup.py install
+```
+
 Tuning the model hyperparameters:
+```
+python3 tune [] []
+```
 
 Training:
-"""
-test
-"""
+```
+python3 train [] []
+```
 
 Testing:
+```
+python3 test [] []
+```
 
 Deploying:
+```
+python3 deploy [] []
+```
 
 # Model
 ![alt text](https://lightgbm.readthedocs.io/en/latest/_images/leaf-wise.png)
