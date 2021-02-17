@@ -6,7 +6,7 @@ Author: Vladimir Lezzhov
 
 # Dataset
 
-The datasets consist of feature vectors extracted from query-url pairs along with relevance judgment labels. Queries and urls are represented by IDs. The relevance judgments are obtained from a retired labeling set of a commercial web search engine (Microsoft Bing), which take 5 values from 0 (irrelevant) to 4 (perfectly relevant).
+The dataset consists of feature vectors extracted from query-url pairs along with relevance judgment labels. Queries and urls are represented by IDs. The relevance judgments are obtained from a retired labeling set of a commercial web search engine (Microsoft Bing), which take 5 values from 0 (irrelevant) to 4 (perfectly relevant).
 
 In the data files, each row corresponds to a query-url pair. The first column is relevance label of the pair, the second column is query id, and the following columns are features. The larger value the relevance label has, the more relevant the query-url pair is. A query-url pair is represented by a 136-dimensional feature vector.
 
